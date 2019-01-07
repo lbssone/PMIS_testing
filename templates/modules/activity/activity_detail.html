@@ -1,0 +1,30 @@
+{% extends 'base/layout.html' %}
+
+{% block main %}
+<h2>行銷活動成果</h2>
+<hr>
+<br>
+<table class="ui table">
+    <thead>
+      <tr>
+        <th>活動日期</th>
+        <th>活動名稱</th>
+        <th>目標客群</th>
+        <th>獲取率</th>
+        <th>取得成本</th>
+      </tr>
+    </thead>
+{% for a in activities %}
+    <tbody>
+      <tr>
+        <td>{{ a.activity_date }}</td>
+        <td>{{ a.activity_name }}</td>
+        <td>{{ a.target_name }}</td>
+        <td>{{ a.get }}</td>
+        <td>{{ a.efficiency }}</td>
+      </tr>
+    </tbody>  
+{% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,148 @@
+{% extends 'base/layout.html' %}
+
+{% block main %}
+<h2>會員分布圖</h2>
+<div id="container" style="display:block; width:330px; margin: 0 auto;"></div>
+<script src="https://code.highcharts.com/highcharts.src.js"></script>
+<script>
+    Highcharts.chart('container', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: '性別'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            name: '性別',
+            colorByPoint: true,
+            data: [{
+                name: '女性',
+                y: {{female_count}},
+                sliced: true,
+                selected: true
+            }, {
+                name: '男性',
+                y: {{male_count}}
+            }]
+        }]
+    });
+</script>
+<div style="text-align:center">
+    <div id="container1" style="display:inline-block ; width:450px;"></div>
+    <script src="https://code.highcharts.com/highcharts.src.js"></script>
+    <script>
+        Highcharts.chart('container1', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: '年齡'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: '年齡',
+                colorByPoint: true,
+                data: [{
+                    name: '0-17',
+                    y: {{seventeen}},
+                    sliced: true,
+                    selected: true
+                }, {
+                    name: '18-30',
+                    y: {{thirty}}
+                }, {
+                    name: '31-40',
+                    y: {{forty}}
+                }, {
+                    name: '41-50',
+                    y: {{fifty}}
+                }, {
+                    name: '51up',
+                    y: {{up}}
+                }]
+            }]
+        });
+    </script>
+    <div id="container2" style="display:inline-block; width:470px;"></div>
+    <script src="https://code.highcharts.com/highcharts.src.js"></script>
+    <script>
+        Highcharts.chart('container2', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: '居住地'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: '居住地',
+                colorByPoint: true,
+                data: [{
+                    name: '台灣北部',
+                    y: {{north}},
+                    sliced: true,
+                    selected: true
+                }, {
+                    name: '台灣中部',
+                    y: {{middle}}
+                }, {
+                    name: '台灣南部',
+                    y: {{south}}
+                }, {
+                    name: '台灣東部',
+                    y: {{east}}
+                }, {
+                    name: '其他',
+                    y: {{other}}
+                }]
+            }]
+        });
+    </script>
+</div>
+{% endblock %}

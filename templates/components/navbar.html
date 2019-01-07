@@ -1,0 +1,42 @@
+{% comment %} <ul id="dropdown1" class="dropdown-content">
+  <li><a href="{% url 'inventory:list' %}">存貨狀況</a></li>
+  <li><a href="#!">two</a></li>
+  <li class="divider"></li>
+  <li><a href="#!">three</a></li>
+</ul>
+<nav class="light-blue darken-3" id="c-font">
+    <a href="{% url 'homepage' %}" class="brand-logo left" id="logo">雨傘王</a>
+    <div class="nav-wrapper container">
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">存貨管理<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a href="{% url 'member:list' %}">會員資料</a></li>
+            <li><a href="#">學生列表</a></li>
+            <li><a href="#">教職員</a></li>
+            <li><a href="#">登出</a></li>
+        </ul>
+    </div>
+</nav> {% endcomment %}
+<div class="ui borderless main menu c-font">
+    <div class="ui container">
+        <a class="header item" href="{% url 'homepage' %}">
+            <img id="nav-img" src="https://jiuanimation.com/works/1203-umbrella-king-logo.jpg">
+        </a>
+        <div class="ui simple dropdown item">
+            存貨管理 <i class="dropdown icon"></i>
+            <div class="menu">
+                <a class="item" href="{% url 'inventory:list' %}">存貨狀況</a>
+            </div>
+        </div>
+        <a class="item" href="{% url 'inventory:schedule_form' %}">生產排程</a>
+        <div class="ui simple dropdown item">
+            需求預測 <i class="dropdown icon"></i>
+            <div class="menu">
+                <a class="item" href="{% url 'transaction:season' %}">季節銷售狀況</a>
+                <a class="item" href="{% url 'transaction:chart' %}">月銷售圖表分析</a>
+            </div>
+        </div>
+        <a class="item" href="{% url 'activity:detail' %}">行銷活動</a>
+        <a class="item" href="{% url 'member:search' %}">會員查詢</a>
+        <a class="item" href="{% url 'member:piechart' %}">會員分布圖</a>
+    </div>
+</div>

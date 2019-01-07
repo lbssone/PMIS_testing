@@ -1,0 +1,46 @@
+{% extends 'base/layout.html' %}
+
+{% block main %}
+<h2>存貨狀況</h2>
+
+<div class="ui segment">
+    <div class="ui three column grid">
+        <div class="column">
+            <h1 class="ui dividing header">Products</h1>
+            <div class="ui horizontal divider"></div>
+            {% for product in product_list %}
+                {% if product.inventory < product.level %}
+                    <p><a href="{% url 'inventory:product_detail' product.pk %}" style="color:red;">{{ product.name }}: {{ product.inventory }}</a></p>
+                {% else %}
+                    <p><a href="{% url 'inventory:product_detail' product.pk %}">{{ product.name }}: {{ product.inventory }}</a></p>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="column">
+            <h1 class="ui dividing header">Components</h1>
+            <div class="ui horizontal divider"></div>
+            {% for component in component_list %}
+                <p>{{ component.name }}: {{ component.inventory }}</p>
+            {% endfor %}
+        </div>
+        <div class="column">
+            <h1 class="ui dividing header">Materials</h1>
+            <div class="ui horizontal divider"></div>
+            <div class="ui two column grid">
+                {% for material in material_list %}
+                <div class="row">
+                    <div class="column">
+                        <p>{{ material.name }}: {{ material.inventory }}
+                    </div>
+                    <div class="column">
+                    {% if material.inventory < material.material_detail.eoq %}
+                        <p><button class="ui red narrow button">已達再訂購點！</button></p>
+                    {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>    
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base/layout.html' %}
+
+{% block main %}
+
+<h1>{{ product.name }}</h1>
+{% for component in product.components_required.all %}
+    <h3>{{ component.name }}: {{ component.inventory }}</h3>
+
+    <p>{{ component.required_material.name }}: {{component.required_material.inventory}}</p>
+
+{% endfor %}
+
+{% endblock %}

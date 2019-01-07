@@ -1,0 +1,13 @@
+{% extends 'base/layout.html' %}
+
+{% block main %}
+
+<div id="container"></div>
+<script>
+  Highcharts.chart('container', {{ chart|safe }});
+</script>
+
+{% load static %}
+<script src="{% static 'js/dropdown.js' %}"></script>
+
+{% endblock %}

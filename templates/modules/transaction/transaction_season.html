@@ -1,0 +1,97 @@
+{% extends 'base/layout.html' %}
+
+{% block main %}
+<h2>季節銷售狀況</h2>
+<hr>
+<br>
+<form action="{% url 'transaction:season' %}" method="POST" class="ui form">{% csrf_token %}
+    <div class="three fields">
+        <div class="three wide field">
+            <select class="ui dropdown" name="year">
+                <option value="">請選擇年份</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+            </select>
+        </div>
+        <div class="two wide field">  
+            <select class="ui dropdown" name="season">
+                <option value="">請選擇季節</option>
+                <option value="春季">春季</option>
+                <option value="夏季">夏季</option>
+                <option value="秋季">秋季</option>
+                <option value="冬季">冬季</option>
+            </select>  
+            {% comment %} <input type="button" name="season" class="ui button" value="春季">  
+            <input type="button" name="season" class="ui button" value="夏季">    
+            <input type="button" name="season" class="ui button" value="秋季">    
+            <input type="button" name="season" class="ui button" value="冬季"> {% endcomment %}
+        </div>
+        <div class="field">    
+            <button type="submit" class="ui button">提交</button>
+        </div>
+    </div>
+</form>
+<h3>{{ req_year }} {{ req_season }}</h3>
+<table class="ui sortable celled table">
+    <thead>
+        <tr>
+            <th>產品名稱</th>
+            <th class="sorted ascending">銷售數量</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>抗UV直傘</td>
+            <td>{{ uv_s_sold }}</td>
+        </tr>
+        <tr>
+            <td>抗UV自動摺傘</td>
+            <td>{{ uv_auto_sold }}</td>
+        </tr>
+        <tr>
+            <td>抗UV手開摺傘</td>
+            <td>{{ uv_manual_sold }}</td>
+        </tr>
+        <tr>
+            <td>防風直傘</td>
+            <td>{{ wind_s_sold }}</td>
+        </tr>
+        <tr>
+            <td>防風自動摺傘</td>
+            <td>{{ wind_auto_sold }}</td>
+        </tr>
+        <tr>
+            <td>防風手開摺傘</td>
+            <td>{{ wind_manual_sold }}</td>
+        </tr>
+        <tr>
+            <td>輕量直傘</td>
+            <td>{{ l_s_sold }}</td>
+        </tr>
+        <tr>
+            <td>輕量自動摺傘</td>
+            <td>{{ l_auto_sold }}</td>
+        </tr>
+        <tr>
+            <td>輕量手開摺傘</td>
+            <td>{{ l_manual_sold }}</td>
+        </tr>
+    </tbody>
+</table>
+
+{% comment %} <p>{{ uv_s_sold }}</p>
+<p>{{ uv_auto_sold }}</p>
+<p>{{ uv_manual_sold }}</p>
+<p>{{ wind_s_sold }}</p>
+<p>{{ wind_auto_sold }}</p>
+<p>{{ wind_manual_sold }}</p>
+<p>{{ l_s_sold }}</p>
+<p>{{ l_auto_sold }}</p>
+<p>{{ l_manual_sold }}</p> {% endcomment %}
+
+{% load static %}
+<script src="{% static 'js/dropdown.js' %}"></script>
+<script src="{% static 'js/tablesort.js' %}"></script>
+
+{% endblock %}
